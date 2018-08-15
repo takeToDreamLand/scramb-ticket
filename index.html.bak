@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>抢票测试页面</title>
+ </head>
+ <body>
+ <button id="btn" disabled="disabled" onclick="alertSuc()">购买</button>
+ <script type="text/javascript">
+	
+	var time = new Date().getSeconds();
+	
+	function alertSuc()
+	{
+		alert("Success!");
+	}
+
+	var grab = function() {
+		btn = document.getElementById("btn");
+		if(time>=0 && time<2){
+		// 这里发现获取到的时间比北京时间晚了20s左右，因此到时候需要再修改
+			document.getElementById("btn").disabled=false;
+		}
+		if (!btn.disabled) {
+			// 可抢票，点击抢票
+			btn.click();
+		} else {
+		// 不可抢票，刷新页面
+			setTimeout(function() {
+				window.location.reload();
+			});
+		}
+	}
+	setInterval("grab()",1000);
+ </script>
+ </body>
+</html>
